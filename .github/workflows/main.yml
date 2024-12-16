@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'src/raw.js'
+      - 'raw.js'
 
 jobs:
   generate-bookmarklet:
@@ -15,7 +15,7 @@ jobs:
       - name: Use Bookmarklet Generator
         uses: ulrischa/js_to_bookmarklet_action@v1
         with:
-          source_js_file: 'src/raw.js'
+          source_js_file: 'raw.js'
           target_html_file: 'index.htm'
           target_element_id: 'target'
           commit_message: 'Update bookmarklet link'
