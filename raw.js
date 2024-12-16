@@ -2,6 +2,7 @@
     try {
         var articles = document.querySelectorAll('article');
         var timestamp = new Date().toLocaleString();
+        
         // HTML Template
         var htmlContent = `
 <!DOCTYPE html>
