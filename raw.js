@@ -75,20 +75,17 @@
             border-style: solid;
             border-color: transparent #ffffff transparent transparent;
         }
-        button.flex.gap-1.items-center.select-none.py-1 {
+        button.select-none {
             position: absolute;
             top: -5px;
             right: -5px;
             padding: 5px 10px;
             font-size: 12px;
             cursor: pointer;
-            background-color: #f0f0f0;
             border: none;
             border-radius: 5px;
         }
-        button.flex.gap-1.items-center.select-none.py-1:hover {
-            background-color: #e0e0e0;
-        }
+       
         pre {
             position: relative;
             display: inline-block;
