@@ -53,7 +53,140 @@
     <main>
      <p>This bookmarklet exports the whole current chat from ChatGPT (not only the last answer) including your prompts in html contents. When you run the bookmarklet, the html contents is stored in the clipboard. You then save it, send it, <a href="https://github.com/ulrischa/mail2github">archive</a> it or paste it where you want. It is a full styled html file - not only a snippet.</p>
     
-    <strong><a id="target" href="javascript:(()%3D%3E%7Btry%7Bvare%3Ddocument.querySelectorAll(%22article%22)%2Ct%3D(newDate).toLocaleString()%2Ca%3D%60%3C!DOCTYPEhtml%3E%3Chtml%3E%3Chead%3E%3Cmetacharset%3D%22UTF-8%22%3E%3Ctitle%3EChatExport%3C%2Ftitle%3E%3Clinkrel%3D%22stylesheet%22href%3D%22https%3A%2F%2Funpkg.com%2Fmvp.css%22%3E%3Clinkrel%3D%22stylesheet%22href%3D%22https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Fhighlight.js%2F11.8.0%2Fstyles%2Fdefault.min.css%22%3E%3Cstyle%3E.w-fit%7Bwidth%3Afit-content%3Bmax-width%3A48rem%3Bheight%3A100%25%3B%7D.chat-container%7Bwidth%3A100%25%3Bmax-width%3A800px%3Bmargin%3A20pxauto%3Bfont-family%3AArial%2Csans-serif%3B%7Dh1%7Btext-align%3Acenter%3Bmargin-bottom%3A10px%3B%7D.timestamp%7Btext-align%3Acenter%3Bmargin-bottom%3A20px%3Bfont-size%3A14px%3Bcolor%3A%23555%3B%7D.chat-message%7Bdisplay%3Aflex%3Bmargin%3A10px0%3B%7D.chat-message.right%7Bjustify-content%3Aflex-end%3B%7D.chat-message.left%7Bjustify-content%3Aflex-start%3B%7D.chat-bubble%7Bpadding%3A10px%3Bborder-radius%3A10px%3Bposition%3Arelative%3Bbox-shadow%3A01px3pxrgba(0%2C0%2C0%2C0.1)%3Boverflow%3Ahidden%3B%7D.chat-bubble.right%7Bbackground-color%3A%23dcf8c6%3B%7D.chat-bubble.left%7Bbackground-color%3A%23ffffff%3B%7D.chat-bubble.right%3A%3Aafter%7Bcontent%3A%22%22%3Bposition%3Aabsolute%3Bright%3A-10px%3Btop%3A10px%3Bborder-width%3A10px010px10px%3Bborder-style%3Asolid%3Bborder-color%3Atransparenttransparenttransparent%23dcf8c6%3B%7D.chat-bubble.left%3A%3Aafter%7Bcontent%3A%22%22%3Bposition%3Aabsolute%3Bleft%3A-10px%3Btop%3A10px%3Bborder-width%3A10px10px10px0%3Bborder-style%3Asolid%3Bborder-color%3Atransparent%23fffffftransparenttransparent%3B%7Dbutton.select-none%7Bposition%3Aabsolute%3Btop%3A-5px%3Bright%3A-5px%3Bpadding%3A5px10px%3Bfont-size%3A12px%3Bcursor%3Apointer%3Bborder%3Anone%3Bborder-radius%3A5px%3B%7Dpre%7Bposition%3Arelative%3Bdisplay%3Ainline-block%3B%7Dcode%7Bpadding%3A2px4px%3Bbackground-color%3A%23f5f5f5%3Bborder-radius%3A3px%3Bdisplay%3Ainline%3B%7D%3C%2Fstyle%3E%3C%2Fhead%3E%3Cbody%3E%3Ch1%3E%3Cahref%3D%22%24%7Bwindow.location.href%7D%22target%3D%22_blank%22%3E%24%7Bwindow.location.href%7D%3C%2Fa%3E%3C%2Fh1%3E%3Cdivclass%3D%22timestamp%22%3EExportedon%3A%24%7Bt%7D%3C%2Fdiv%3E%3Cdivclass%3D%22chat-container%22%3E%60%2Cr%3D(e.forEach(function(e%2Ct)%7Bvarr%3De.querySelector(%22.whitespace-pre-wrap%2C.markdown%22)%2Co%3D%22%22%3Br%26%26(e.querySelectorAll(%22img%5Bwidth%5D%5Bheight%5D%22).forEach(function(e)%7Bo%2B%3De.outerHTML%7D)%2Ca%2B%3D%60%3Cdivclass%3D%22chat-message%24%7Bt%252%3D%3D0%3F%22right%22%3A%22left%22%7D%22%3E%3Cdivclass%3D%22chat-bubble%24%7Bt%252%3D%3D0%3F%22right%22%3A%22left%22%7D%22%3E%24%7Bo%7D%24%7Br.innerHTML%7D%3C%2Fdiv%3E%3C%2Fdiv%3E%60)%7D)%2Ca%2B%3D%60%3C%2Fdiv%3E%3Cscriptsrc%3D%22https%3A%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Fhighlight.js%2F11.8.0%2Fhighlight.min.js%22%3E%3C%2Fscript%3E%3Cscript%3Ehljs.highlightAll()%3Bdocument.querySelectorAll(%22button.flex.gap-1.items-center.select-none.py-1%22).forEach(btn%3D%3E%7Bbtn.addEventListener(%22click%22%2Cfunction()%7Bvarpre%3Dbtn.closest(%22pre%22)%3Bif(pre)%7Bvarcode%3Dpre.querySelector(%22code%22)%3Bif(code)%7Bvartextarea%3Ddocument.createElement(%22textarea%22)%3Btextarea.value%3Dcode.innerText%3Bdocument.body.appendChild(textarea)%3Btextarea.select()%3Btry%7Bdocument.execCommand(%22copy%22)%3Balert(%22Codecopiedtoclipboard.%22)%3B%7Dcatch(e)%7Balert(%22Failedtocopycode.%22)%3B%7Ddocument.body.removeChild(textarea)%3B%7D%7D%7D)%3B%7D)%3B%3C%2Fscript%3E%3C%2Fbody%3E%3C%2Fhtml%3E%60%2Cdocument.createElement(%22textarea%22))%2Co%3D(r.value%3Da%2Cr.setAttribute(%22readonly%22%2C%22%22)%2Cr.style.position%3D%22absolute%22%2Cr.style.left%3D%22-9999px%22%2Cdocument.body.appendChild(r)%2Cr.select()%2Cdocument.execCommand(%22copy%22))%3Bdocument.body.removeChild(r)%2Co%3Falert(%22CompleteHTMLfilewithsyntaxhighlightingandtimestampcopiedtoclipboard.%22)%3Aalert(%22Failedtocopythecontent.%22)%7Dcatch(e)%7Balert(%22Error%3A%22%2Be)%7D%7D)()%3B">Chat Pager</a></strong>
+    <strong><a id="target" href="javascript:(()=>{try{var e=document.querySelectorAll("article"),t=(new Date).toLocaleString(),a=`
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Export</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <style>
+        .w-fit {
+            width: fit-content;
+            max-width: 48rem;
+            height: 100%;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .timestamp {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .chat-message {
+            display: flex;
+            margin: 10px 0;
+        }
+        .chat-message.right {
+            justify-content: flex-end;
+        }
+        .chat-message.left {
+            justify-content: flex-start;
+        }
+        .chat-bubble {
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .chat-bubble.right {
+            background-color: #dcf8c6;
+        }
+        .chat-bubble.left {
+            background-color: #ffffff;
+        }
+        .chat-bubble.right::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: 10px;
+            border-width: 10px 0 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent #dcf8c6;
+        }
+        .chat-bubble.left::after {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 10px;
+            border-width: 10px 10px 10px 0;
+            border-style: solid;
+            border-color: transparent #ffffff transparent transparent;
+        }
+        button.select-none {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+       
+        pre {
+            position: relative;
+            display: inline-block;
+        }
+        code {
+            padding: 2px 4px;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="${window.location.href}" target="_blank">${window.location.href}</a></h1>
+    <div class="timestamp">Exported on: ${t}</div>
+    <div class="chat-container">
+`,r=(e.forEach(function(e,t){var r=e.querySelector(".whitespace-pre-wrap, .markdown"),o="";r&&(e.querySelectorAll("img[width][height]").forEach(function(e){o+=e.outerHTML}),a+=`
+                <div class="chat-message ${t%2==0?"right":"left"}">
+                    <div class="chat-bubble ${t%2==0?"right":"left"}">
+                        ${o}${r.innerHTML}
+                    </div>
+                </div>
+                `)}),a+=`
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        document.querySelectorAll("button.flex.gap-1.items-center.select-none.py-1").forEach(btn => {
+            btn.addEventListener("click", function () {
+                var pre = btn.closest("pre");
+                if (pre) {
+                    var code = pre.querySelector("code");
+                    if (code) {
+                        var textarea = document.createElement("textarea");
+                        textarea.value = code.innerText;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        try {
+                            document.execCommand("copy");
+                            alert("Code copied to clipboard.");
+                        } catch (e) {
+                            alert("Failed to copy code.");
+                        }
+                        document.body.removeChild(textarea);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+`,document.createElement("textarea")),o=(r.value=a,r.setAttribute("readonly",""),r.style.position="absolute",r.style.left="-9999px",document.body.appendChild(r),r.select(),document.execCommand("copy"));document.body.removeChild(r),o?alert("Complete HTML file with syntax highlighting and timestamp copied to clipboard."):alert("Failed to copy the content.")}catch(e){alert("Error: "+e)}})();">Chat Pager</a></strong>
 
         <br />
     <br />
