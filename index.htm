@@ -53,14 +53,14 @@
     <main>
      <p>This bookmarklet exports the whole current chat from ChatGPT (not only the last answer) including your prompts in html contents. When you run the bookmarklet, the html contents is stored in the clipboard. You then save it, send it, <a href="https://github.com/ulrischa/mail2github">archive</a> it or paste it where you want. It is a full styled html file - not only a snippet.</p>
     
-    <strong><a id="target" href="javascript:(()=>{try{var e=document.querySelectorAll(&quot;article&quot;),t=(new Date).toLocaleString(),a=`
+    <strong><a id="target" href='javascript:(()=>{try{var e=document.querySelectorAll("article"),t=(new Date).toLocaleString(),a=`
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset=&quot;UTF-8&quot;>
+    <meta charset="UTF-8">
     <title>Chat Export</title>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/mvp.css&quot;>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css&quot;>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
     <style>
         .w-fit {
             width: fit-content;
@@ -107,7 +107,7 @@
             background-color: #ffffff;
         }
         .chat-bubble.right::after {
-            content: &quot;&quot;;
+            content: "";
             position: absolute;
             right: -10px;
             top: 10px;
@@ -116,7 +116,7 @@
             border-color: transparent transparent transparent #dcf8c6;
         }
         .chat-bubble.left::after {
-            content: &quot;&quot;;
+            content: "";
             position: absolute;
             left: -10px;
             top: 10px;
@@ -148,35 +148,35 @@
     </style>
 </head>
 <body>
-    <h1><a href=&quot;${window.location.href}&quot; target=&quot;_blank&quot;>${window.location.href}</a></h1>
-    <div class=&quot;timestamp&quot;>Exported on: ${t}</div>
-    <div class=&quot;chat-container&quot;>
-`,r=(e.forEach(function(e,t){var r=e.querySelector(&quot;.whitespace-pre-wrap, .markdown&quot;),o=&quot;&quot;;r&&(e.querySelectorAll(&quot;img[width][height]&quot;).forEach(function(e){o+=e.outerHTML}),a+=`
-                <div class=&quot;chat-message ${t%2==0?&quot;right&quot;:&quot;left&quot;}&quot;>
-                    <div class=&quot;chat-bubble ${t%2==0?&quot;right&quot;:&quot;left&quot;}&quot;>
+    <h1><a href="${window.location.href}" target="_blank">${window.location.href}</a></h1>
+    <div class="timestamp">Exported on: ${t}</div>
+    <div class="chat-container">
+`,r=(e.forEach(function(e,t){var r=e.querySelector(".whitespace-pre-wrap, .markdown"),o="";r&&(e.querySelectorAll("img[width][height]").forEach(function(e){o+=e.outerHTML}),a+=`
+                <div class="chat-message ${t%2==0?"right":"left"}">
+                    <div class="chat-bubble ${t%2==0?"right":"left"}">
                         ${o}${r.innerHTML}
                     </div>
                 </div>
                 `)}),a+=`
     </div>
-    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js&quot;></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>
         hljs.highlightAll();
-        document.querySelectorAll(&quot;button.flex.gap-1.items-center.select-none.py-1&quot;).forEach(btn => {
-            btn.addEventListener(&quot;click&quot;, function () {
-                var pre = btn.closest(&quot;pre&quot;);
+        document.querySelectorAll("button.flex.gap-1.items-center.select-none.py-1").forEach(btn => {
+            btn.addEventListener("click", function () {
+                var pre = btn.closest("pre");
                 if (pre) {
-                    var code = pre.querySelector(&quot;code&quot;);
+                    var code = pre.querySelector("code");
                     if (code) {
-                        var textarea = document.createElement(&quot;textarea&quot;);
+                        var textarea = document.createElement("textarea");
                         textarea.value = code.innerText;
                         document.body.appendChild(textarea);
                         textarea.select();
                         try {
-                            document.execCommand(&quot;copy&quot;);
-                            alert(&quot;Code copied to clipboard.&quot;);
+                            document.execCommand("copy");
+                            alert("Code copied to clipboard.");
                         } catch (e) {
-                            alert(&quot;Failed to copy code.&quot;);
+                            alert("Failed to copy code.");
                         }
                         document.body.removeChild(textarea);
                     }
@@ -186,7 +186,7 @@
     </script>
 </body>
 </html>
-`,document.createElement(&quot;textarea&quot;)),o=(r.value=a,r.setAttribute(&quot;readonly&quot;,&quot;&quot;),r.style.position=&quot;absolute&quot;,r.style.left=&quot;-9999px&quot;,document.body.appendChild(r),r.select(),document.execCommand(&quot;copy&quot;));document.body.removeChild(r),o?alert(&quot;Complete HTML file with syntax highlighting and timestamp copied to clipboard.&quot;):alert(&quot;Failed to copy the content.&quot;)}catch(e){alert(&quot;Error: &quot;+e)}})();"article"),t=(new Date).toLocaleString(),a=`
+`,document.createElement("textarea")),o=(r.value=a,r.setAttribute("readonly",""),r.style.position="absolute",r.style.left="-9999px",document.body.appendChild(r),r.select(),document.execCommand("copy"));document.body.removeChild(r),o?alert("Complete HTML file with syntax highlighting and timestamp copied to clipboard."):alert("Failed to copy the content.")}catch(e){alert("Error: "+e)}})();'article"),t=(new Date).toLocaleString(),a=`
 <!DOCTYPE html>
 <html>
 <head>
