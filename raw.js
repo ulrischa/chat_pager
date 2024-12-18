@@ -3,6 +3,7 @@
         var articles = document.querySelectorAll('article');
         var timestamp = new Date().toLocaleString();
         // HTML Template
+            alert('da');
         var htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -103,7 +104,7 @@
     <div class="chat-container">
 `;
 
-      alert('da');
+
         // Process articles and add messages
         articles.forEach(function (article, index) {
             var messageContent = article.querySelector('.whitespace-pre-wrap, .markdown');
