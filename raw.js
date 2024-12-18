@@ -103,6 +103,7 @@
     <div class="chat-container">
 `;
 
+      alert('da');
         // Process articles and add messages
         articles.forEach(function (article, index) {
             var messageContent = article.querySelector('.whitespace-pre-wrap, .markdown');
