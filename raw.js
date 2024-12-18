@@ -1,9 +1,10 @@
   (function () {
     try {
+            alert('da');
         var articles = document.querySelectorAll('article');
         var timestamp = new Date().toLocaleString();
         // HTML Template
-            alert('da');
+         
         var htmlContent = `
 <!DOCTYPE html>
 <html>
