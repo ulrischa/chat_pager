@@ -1,162 +1,156 @@
- (function () {
+(function () {
     try {
         var articles = document.querySelectorAll('article');
         var timestamp = new Date().toLocaleString();
-        // HTML Template
-        var htmlContent = `
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Chat Export</title>
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
-    <style>
-        .w-fit {
-            width: fit-content;
-            max-width: 48rem;
-            height: 100%;
-        }
-        .chat-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .timestamp {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #555;
-        }
-        .chat-message {
-            display: flex;
-            margin: 10px 0;
-        }
-        .chat-message.right {
-            justify-content: flex-end;
-        }
-        .chat-message.left {
-            justify-content: flex-start;
-        }
-        .chat-bubble {
-            padding: 10px;
-            border-radius: 10px;
-            position: relative;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        .chat-bubble.right {
-            background-color: #dcf8c6;
-        }
-        .chat-bubble.left {
-            background-color: #ffffff;
-        }
-        .chat-bubble.right::after {
-            content: "";
-            position: absolute;
-            right: -10px;
-            top: 10px;
-            border-width: 10px 0 10px 10px;
-            border-style: solid;
-            border-color: transparent transparent transparent #dcf8c6;
-        }
-        .chat-bubble.left::after {
-            content: "";
-            position: absolute;
-            left: -10px;
-            top: 10px;
-            border-width: 10px 10px 10px 0;
-            border-style: solid;
-            border-color: transparent #ffffff transparent transparent;
-        }
-        button.select-none {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            padding: 5px 10px;
-            font-size: 12px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-        }
-       
-        pre {
-            position: relative;
-            display: inline-block;
-        }
-        code {
-            padding: 2px 4px;
-            background-color: #f5f5f5;
-            border-radius: 3px;
-            display: inline;
-        }
-    </style>
-</head>
-<body>
-    <h1><a href="${window.location.href}" target="_blank">${window.location.href}</a></h1>
-    <div class="timestamp">Exported on: ${timestamp}</div>
-    <div class="chat-container">
-`;
+        var currentHref = window.location.href;
+        
+        var htmlContent = ""
+          + "<!DOCTYPE html>\n"
+          + "<html>\n"
+          + "<head>\n"
+          + "    <meta charset=\"UTF-8\">\n"
+          + "    <title>Chat Export</title>\n"
+          + "    <link rel=\"stylesheet\" href=\"https://unpkg.com/mvp.css\">\n"
+          + "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css\">\n"
+          + "    <style>\n"
+          + "        .w-fit {\n"
+          + "            width: fit-content;\n"
+          + "            max-width: 48rem;\n"
+          + "            height: 100%;\n"
+          + "        }\n"
+          + "        .chat-container {\n"
+          + "            width: 100%;\n"
+          + "            max-width: 800px;\n"
+          + "            margin: 20px auto;\n"
+          + "            font-family: Arial, sans-serif;\n"
+          + "        }\n"
+          + "        h1 {\n"
+          + "            text-align: center;\n"
+          + "            margin-bottom: 10px;\n"
+          + "        }\n"
+          + "        .timestamp {\n"
+          + "            text-align: center;\n"
+          + "            margin-bottom: 20px;\n"
+          + "            font-size: 14px;\n"
+          + "            color: #555;\n"
+          + "        }\n"
+          + "        .chat-message {\n"
+          + "            display: flex;\n"
+          + "            margin: 10px 0;\n"
+          + "        }\n"
+          + "        .chat-message.right {\n"
+          + "            justify-content: flex-end;\n"
+          + "        }\n"
+          + "        .chat-message.left {\n"
+          + "            justify-content: flex-start;\n"
+          + "        }\n"
+          + "        .chat-bubble {\n"
+          + "            padding: 10px;\n"
+          + "            border-radius: 10px;\n"
+          + "            position: relative;\n"
+          + "            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);\n"
+          + "            overflow: hidden;\n"
+          + "        }\n"
+          + "        .chat-bubble.right {\n"
+          + "            background-color: #dcf8c6;\n"
+          + "        }\n"
+          + "        .chat-bubble.left {\n"
+          + "            background-color: #ffffff;\n"
+          + "        }\n"
+          + "        .chat-bubble.right::after {\n"
+          + "            content: \"\";\n"
+          + "            position: absolute;\n"
+          + "            right: -10px;\n"
+          + "            top: 10px;\n"
+          + "            border-width: 10px 0 10px 10px;\n"
+          + "            border-style: solid;\n"
+          + "            border-color: transparent transparent transparent #dcf8c6;\n"
+          + "        }\n"
+          + "        .chat-bubble.left::after {\n"
+          + "            content: \"\";\n"
+          + "            position: absolute;\n"
+          + "            left: -10px;\n"
+          + "            top: 10px;\n"
+          + "            border-width: 10px 10px 10px 0;\n"
+          + "            border-style: solid;\n"
+          + "            border-color: transparent #ffffff transparent transparent;\n"
+          + "        }\n"
+          + "        button.select-none {\n"
+          + "            position: absolute;\n"
+          + "            top: -5px;\n"
+          + "            right: -5px;\n"
+          + "            padding: 5px 10px;\n"
+          + "            font-size: 12px;\n"
+          + "            cursor: pointer;\n"
+          + "            border: none;\n"
+          + "            border-radius: 5px;\n"
+          + "        }\n"
+          + "        pre {\n"
+          + "            position: relative;\n"
+          + "            display: inline-block;\n"
+          + "        }\n"
+          + "        code {\n"
+          + "            padding: 2px 4px;\n"
+          + "            background-color: #f5f5f5;\n"
+          + "            border-radius: 3px;\n"
+          + "            display: inline;\n"
+          + "        }\n"
+          + "    </style>\n"
+          + "</head>\n"
+          + "<body>\n"
+          + "    <h1><a href=\"" + currentHref + "\" target=\"_blank\">" + currentHref + "</a></h1>\n"
+          + "    <div class=\"timestamp\">Exported on: " + timestamp + "</div>\n"
+          + "    <div class=\"chat-container\">\n";
 
-        // Process articles and add messages
-        articles.forEach(function (article, index) {
+        // Nachrichten verarbeiten
+        for (var i = 0; i < articles.length; i++) {
+            var article = articles[i];
             var messageContent = article.querySelector('.whitespace-pre-wrap, .markdown');
-            var imagesHtml = '';
-
+            var imagesHtml = "";
             if (messageContent) {
                 var images = article.querySelectorAll('img[width][height]');
-                images.forEach(function (image) {
-                    imagesHtml += image.outerHTML;
-                });
-
-                htmlContent += `
-                <div class="chat-message ${index % 2 === 0 ? 'right' : 'left'}">
-                    <div class="chat-bubble ${index % 2 === 0 ? 'right' : 'left'}">
-                        ${imagesHtml}${messageContent.innerHTML}
-                    </div>
-                </div>
-                `;
-            }
-        });
-
-        // Close HTML content
-        htmlContent += `
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script>
-        hljs.highlightAll();
-        document.querySelectorAll("button.flex.gap-1.items-center.select-none.py-1").forEach(btn => {
-            btn.addEventListener("click", function () {
-                var pre = btn.closest("pre");
-                if (pre) {
-                    var code = pre.querySelector("code");
-                    if (code) {
-                        var textarea = document.createElement("textarea");
-                        textarea.value = code.innerText;
-                        document.body.appendChild(textarea);
-                        textarea.select();
-                        try {
-                            document.execCommand("copy");
-                            alert("Code copied to clipboard.");
-                        } catch (e) {
-                            alert("Failed to copy code.");
-                        }
-                        document.body.removeChild(textarea);
-                    }
+                for (var j = 0; j < images.length; j++) {
+                    imagesHtml += images[j].outerHTML;
                 }
-            });
-        });
-    </script>
-</body>
-</html>
-`;
+                htmlContent += ""
+                  + "                <div class=\"chat-message " + (i % 2 === 0 ? 'right' : 'left') + "\">\n"
+                  + "                    <div class=\"chat-bubble " + (i % 2 === 0 ? 'right' : 'left') + "\">\n"
+                  + "                        " + imagesHtml + messageContent.innerHTML + "\n"
+                  + "                    </div>\n"
+                  + "                </div>\n";
+            }
+        }
 
-        // Copy to clipboard
+        htmlContent += ""
+          + "    </div>\n"
+          + "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js\"></script>\n"
+          + "    <script>\n"
+          + "        hljs.highlightAll();\n"
+          + "        document.querySelectorAll(\"button.flex.gap-1.items-center.select-none.py-1\").forEach(function(btn){\n"
+          + "            btn.addEventListener(\"click\", function(){\n"
+          + "                var pre = btn.closest(\"pre\");\n"
+          + "                if (pre) {\n"
+          + "                    var code = pre.querySelector(\"code\");\n"
+          + "                    if (code) {\n"
+          + "                        var textarea = document.createElement(\"textarea\");\n"
+          + "                        textarea.value = code.innerText;\n"
+          + "                        document.body.appendChild(textarea);\n"
+          + "                        textarea.select();\n"
+          + "                        try {\n"
+          + "                            document.execCommand(\"copy\");\n"
+          + "                            alert(\"Code copied to clipboard.\");\n"
+          + "                        } catch (e) {\n"
+          + "                            alert(\"Failed to copy code.\");\n"
+          + "                        }\n"
+          + "                        document.body.removeChild(textarea);\n"
+          + "                    }\n"
+          + "                }\n"
+          + "            });\n"
+          + "        });\n"
+          + "    </script>\n"
+          + "</body>\n"
+          + "</html>\n";
+
         var textarea = document.createElement('textarea');
         textarea.value = htmlContent;
         textarea.setAttribute('readonly', '');
@@ -164,10 +158,14 @@
         textarea.style.left = '-9999px';
         document.body.appendChild(textarea);
         textarea.select();
-        var success = document.execCommand('copy');
+        var success = false;
+        try {
+            success = document.execCommand('copy');
+        } catch (e) {
+            // Fehler beim Kopieren
+        }
         document.body.removeChild(textarea);
 
-        // Notify the user
         if (success) {
             alert('Complete HTML file with syntax highlighting and timestamp copied to clipboard.');
         } else {
