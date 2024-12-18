@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat Export</title>
-   
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
     <style>
         .w-fit {
             width: fit-content;
@@ -126,7 +127,31 @@
         // Close HTML content
         htmlContent += `
     </div>
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        document.querySelectorAll("button.flex.gap-1.items-center.select-none.py-1").forEach(btn => {
+            btn.addEventListener("click", function () {
+                var pre = btn.closest("pre");
+                if (pre) {
+                    var code = pre.querySelector("code");
+                    if (code) {
+                        var textarea = document.createElement("textarea");
+                        textarea.value = code.innerText;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        try {
+                            document.execCommand("copy");
+                            alert("Code copied to clipboard.");
+                        } catch (e) {
+                            alert("Failed to copy code.");
+                        }
+                        document.body.removeChild(textarea);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 `;
