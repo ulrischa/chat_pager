@@ -1,4 +1,4 @@
-  (function () {
+(function () {
     try {
         var articles = document.querySelectorAll('article');
         var timestamp = new Date().toLocaleString();
