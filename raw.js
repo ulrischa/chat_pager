@@ -11,6 +11,12 @@
     <title>Chat Export</title>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+   
+</head>
+<body>
+    <h1><a href="${window.location.href}" target="_blank">${window.location.href}</a></h1>
+    <div class="timestamp">Exported on: ${timestamp}</div>
+    <div class="chat-container">
   
 `;
 
